@@ -36,6 +36,10 @@ def create(url):
     if existing_shortcode is not None:
         logger.error("duplicate shortcode found")
         return abort(409, "Shortcode already in use")
+    existing_shortcode = URL.query.filter(URL.url == long_url).one_or_none()
+    if existing_shortcode is not None:
+        logger.error("duplicate url found")
+        return abort(409, "url already in use")
     new_shortcode = URL(shortcode=code, url=long_url,
                  createDate=datetime.now(), lastRedirect=None, redirectCount=0)
     db.session.add(new_shortcode)
