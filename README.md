@@ -14,7 +14,6 @@ Create a webservice that shortens urls akin to tinyurl and bit.ly, and provides 
 - SQLAlchemy 1.4.42
 
 ## How to Run 
-
 clone the repository.
 
      git clone https://github.com/soheila-askarzadeh/url-shortener.git
@@ -37,6 +36,10 @@ Install the dependencies from `requirements.txt`
 
 Navigate to the /shortener folder 
      cd shortener
+
+Build database
+    ### Terminal
+    python build_db.py
 
 Then run the main Python script:
      python main.py
