@@ -46,7 +46,7 @@ To build a database run
 
 Then run the main Python script
 
-     python main.py
+     python app.py
 
 ## API documentation
 After running the project, browse http://localhost:7006/api/ui
