@@ -19,27 +19,23 @@ clone the repository.
      git clone https://github.com/soheila-askarzadeh/url-shortener.git
 
 Navigate to the project directory:
-
      cd /path-to-project
 
-Create a virtual environment
- ### Terminal 
+Create a virtual environment 
      python -m venv venv
 
 Activate a virtual environment
- ### Terminal 
-    source venv/bin/activate  (MacOS)
+     source venv/bin/activate  (MacOS\Linux)
+     .\venv\Scripts\activate   (Windows)  
 
 Install the dependencies from `requirements.txt`
-   ### Terminal 
     (vevn) pip install -r requirements.txt 
 
 Navigate to the /shortener folder 
      cd shortener
 
 Build database
-    ### Terminal
-    python build_db.py
+     python build_db.py
 
 Then run the main Python script:
      python main.py
