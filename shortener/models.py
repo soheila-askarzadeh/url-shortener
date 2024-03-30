@@ -15,6 +15,7 @@ class URL(db.Model):
 class URLSchema(ma.SQLAlchemyAutoSchema):
     """URL API Model"""
     class Meta:
+        """Configuring SQLAlchemy behavior for the URL model"""
         model = URL
         load_instance = True
         sqla_session = db.session

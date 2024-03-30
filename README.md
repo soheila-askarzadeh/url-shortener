@@ -51,5 +51,8 @@ Then run the main Python script
 ## API documentation
 After running the project, browse http://localhost:7006/api/ui
 
+## List of Shortcodes
+Upon running the project and inserting a new shortcode, you can view a list of items by navigating to http://localhost:7006/.
+
 ## Author
    Soheila Askarzadeh 

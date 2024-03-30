@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+    <h1>Welcome to URL Shortener Webservices</h1>
+    <p >You can find all shortcodes here, if there are any!</p>
+    <ul class="content">
+        {% for url in urls %}
+            <li class="main_item">{{url.shortcode}}</li>
+                <ul>
+                    <li>
+                        <p class="sub_item">URL</p> {{url.url}}
+                    </li>
+                    <li>
+                        <p class="sub_item">Create Date</p> {{url.createDate}}
+                    </li>
+                    <li>
+                        <p class="sub_item">Redirect Date</p> {{url.lastRedirect}}
+                    </li>
+                    <li>
+                        <p class="sub_item">Redirect Count</p> {{url.redirectCount}}
+                    </li>
+                    <br/>
+                </ul>
+        {% endfor %}
+    </ul>  
+</body>
+</html>

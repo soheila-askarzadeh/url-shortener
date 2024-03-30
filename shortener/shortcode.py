@@ -8,7 +8,7 @@ from flask import abort, make_response, jsonify
 from models import URL
 
 def create_logger():
-    """create logger"""
+    """Create logger"""
     log = logging.getLogger("__name__")
     log.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s %(message)s %(levelname)s")
@@ -20,7 +20,7 @@ def create_logger():
 logger = create_logger()
 
 def create(url):
-    """create new shorten code"""
+    """Create new shorten code"""
     logger.info("create new shortcode for %s",url)
     long_url = url.get("url")
     code = url.get("shortcode")
@@ -51,11 +51,11 @@ def create(url):
     return jsonify({"shortcode": code}), 201
 
 def get_random_code():
-    """generate random alphanumeric characters with a length of 6"""
+    """Generate random alphanumeric characters with a length of 6"""
     return "".join(random.choices(string.ascii_letters + string.digits , k=6))
 
 def validate_code(code):
-    """validate shortcode"""
+    """Validate shortcode"""
     if not code:
         return False
     if code.isalnum() or "_" in code:
@@ -63,7 +63,7 @@ def validate_code(code):
     return False
 
 def read(shortcode):
-    """read one shortcode"""
+    """Read one shortcode"""
     logger.info("read date by shortcode: %s",shortcode)
     existing_shortcode = URL.query.filter(URL.shortcode == shortcode).one_or_none()
     if existing_shortcode is None:
@@ -82,7 +82,7 @@ def read(shortcode):
     return response
 
 def get_stats(shortcode):
-    """retrieves statistics for the specified shortcode"""
+    """Retrieves statistics for the specified shortcode"""
     logger.info("get stats by shortcode: %s",shortcode)
     existing_shortcode = URL.query.filter(URL.shortcode == shortcode).one_or_none()
     if existing_shortcode:

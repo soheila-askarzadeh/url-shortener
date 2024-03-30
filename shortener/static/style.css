@@ -1,0 +1,27 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    background-color: black;
+}
+h1 {
+    color: gold;
+    font-style: italic;
+}
+p {
+    color: white;
+}
+.content{
+    color: rgb(205, 178, 27);
+    font-weight: bold;
+}
+.main_item{
+    color: rgb(205, 178, 27); 
+    font-size: large; 
+    font-weight: bold;
+    font-style: italic;
+}
+.sub_item{
+    color: white; 
+    font-size: medium;
+    font-weight: 200;
+}
