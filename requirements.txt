@@ -1,7 +1,6 @@
-connexion==2.14.1
 Flask==2.2.2
 flask-marshmallow==0.14.0
 Flask-SQLAlchemy==3.0.2
 marshmallow==3.18.0
 marshmallow-sqlalchemy==0.28.1
-SQLAlchemy==1.4.42
+flask_swagger_ui==3.0.12
