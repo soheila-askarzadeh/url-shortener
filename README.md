@@ -1,4 +1,4 @@
-# URL Shortenercd
+# URL Shortener
 
 ## Overview 
 Create a web service that shortens URLs akin to 'tinyurl' and 'bit.ly', and provides statistics on their usage.
