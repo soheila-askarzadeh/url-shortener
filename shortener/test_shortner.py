@@ -11,7 +11,9 @@ class TestShortcode(unittest.TestCase):
 
     def tearDown(self):
         with app.app_context():
-            db.drop_all()
+            for table in reversed(db.metadata.sorted_tables):
+                db.session.query(table).delete()
+            db.session.commit()
 
     def test_read_success(self):
         """read shortcode, success"""
