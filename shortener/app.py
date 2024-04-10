@@ -119,7 +119,9 @@ def validate_code(code):
     """Validate shortcode"""
     if not code:
         return False
-    if code.isalnum() or "_" in code or len(code) <= 6:
+    if len(code) != 6:
+        return False
+    if code.isalnum() or "_" in code:
         return True
     return False
 
