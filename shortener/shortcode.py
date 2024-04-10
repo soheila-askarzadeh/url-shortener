@@ -47,8 +47,9 @@ def create(url):
     shortend_url = generate_shortened_url(long_url, code)
     new_shortcode = URL(shortcode =code, url=long_url, shortened_url=shortend_url,
                  createDate=datetime.now(), lastRedirect=None, redirectCount=0)
-    db.session.add(new_shortcode)
-    db.session.commit()
+    with db.session() as session:
+        session.add(new_shortcode)
+        session.commit()
     logger.info("successfully create new shortcode: %s for url %s", code, long_url)
     return jsonify({"shortcode": code}), 201
 
@@ -79,15 +80,12 @@ def read(shortcode):
     existing_shortcode.lastRedirect = datetime.now()
     if existing_shortcode.redirectCount is not None:
         existing_shortcode.redirectCount += 1
-    try:
-        db.session.commit()
-    except Exception as e:
-        logger.error("Failed to commit changes to database: %s", e)
-        db.session.rollback()
-        return abort(500, "Internal Server Error")
-    response = make_response("", 302)
-    response.headers['Location'] = existing_shortcode.url
-    return response
+    with db.session() as session:
+        session.add(existing_shortcode)
+        session.commit()
+        response = make_response("", 302)
+        response.headers['Location'] = existing_shortcode.url
+        return response
 
 def get_stats(shortcode):
     """Retrieves statistics for the specified shortcode"""
