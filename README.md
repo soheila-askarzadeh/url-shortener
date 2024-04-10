@@ -46,15 +46,6 @@ Then run the main Python script
 
      python app.py
 
-## How to Run test 
-Navigate to the /shortener folder
-
-     cd shortener
-     
-Then run the test_shortener script (make sure the virtual environment is activated when running the test)
-
-     python test_shortener.py
-
 ## API documentation
 
 ### Base URL
@@ -91,6 +82,7 @@ The base URL for all endpoints is: `http://localhost:7006`
 - **Parameters**:
   - `shortcode`: The shortcode generated during URL shortening.
 - **Response**: Redirects to the original URL.
+     - **Status Code**: `302` 
 
 #### 3. Retrieve Statistics for Shortened URL
 
