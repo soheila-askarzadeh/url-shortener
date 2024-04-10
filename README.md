@@ -51,7 +51,7 @@ Navigate to the /shortener folder
 
      cd shortener
      
-Then run the test_shortener script
+Then run the test_shortener script (make sure the virtual environment is activated when running the test)
 
      python test_shortener.py
 
