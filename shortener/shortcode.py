@@ -3,6 +3,7 @@ import random
 import string
 import logging
 from datetime import datetime
+from urllib.parse import urlparse
 from extention import db
 from flask import abort, make_response, jsonify
 from models import URL
@@ -27,7 +28,7 @@ def create(url):
     if not long_url:
         logger.error("url is empty")
         return abort(400, "Url not present")
-    if not long_url.startswith("http"):
+    if not long_url.startswith("http") or len(long_url) > 150:
         logger.error("url is invalid")
         return abort(412, "The provided url is invalid")
     if not code:
@@ -43,7 +44,8 @@ def create(url):
     if existing_shortcode is not None:
         logger.error("duplicate url found")
         return abort(409, "url already in use")
-    new_shortcode = URL(shortcode=code, url=long_url,
+    shortend_url = generate_shortened_url(long_url, code)
+    new_shortcode = URL(shortcode =code, url=long_url, shortened_url=shortend_url,
                  createDate=datetime.now(), lastRedirect=None, redirectCount=0)
     db.session.add(new_shortcode)
     db.session.commit()
@@ -61,6 +63,12 @@ def validate_code(code):
     if code.isalnum() or "_" in code:
         return True
     return False
+
+def generate_shortened_url(url, shortcode):
+    """Generate short url"""
+    parsed_url = urlparse(url)
+    base_url = f"{parsed_url.scheme}://{parsed_url.netloc}/"
+    return base_url + shortcode
 
 def read(shortcode):
     """Read one shortcode"""

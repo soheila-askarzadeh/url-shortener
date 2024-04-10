@@ -48,11 +48,16 @@ Then run the main Python script
 
      python app.py
 
+## How to Run test 
+To test the app, run the app.py script first, then execute the test_shortener script
+
+     python test_shortener.py
+
 ## API documentation
 After running the project, browse http://localhost:7006/api/ui
 
 ## List of Shortcodes
-Upon running the project and inserting a new shortcode, you can view a list of items by navigating to http://localhost:7006/.
+Upon running the project and inserting a new shortcode, you can view a list of items by navigating to http://localhost:7006/
 
 ## Author
    Soheila Askarzadeh 

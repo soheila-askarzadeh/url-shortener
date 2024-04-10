@@ -8,6 +8,7 @@ class URL(db.Model):
     id_ = db.Column(db.Integer, primary_key=True)
     shortcode = db.Column(db.String(6), unique =True)
     url = db.Column(db.String(150), unique = True)
+    shortened_url= db.Column(db.String(100), unique = True)
     createDate = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
     lastRedirect = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
     redirectCount = db.Column(db.Integer)

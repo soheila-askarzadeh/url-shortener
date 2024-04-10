@@ -77,6 +77,11 @@ class TestShortcode(unittest.TestCase):
 
     def test_create_duplicate_shortcode(self):
         """create shortcode, duplicate shortcode"""
+        shortcode = 'abc123'
+        url = 'http://example.com'
+        existing_shortcode = URL(shortcode=shortcode, url=url)
+        db.session.add(existing_shortcode)
+        db.session.commit()
         url ="http://127.0.0.1:7006/api/shorten"
         payload ={
                 "shortcode": "abc123",
