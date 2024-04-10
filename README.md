@@ -47,7 +47,11 @@ Then run the main Python script
      python app.py
 
 ## How to Run test 
-To test the app, run the app.py script first, then execute the test_shortener script
+Navigate to the /shortener folder
+
+     cd shortener
+     
+Then run the test_shortener script
 
      python test_shortener.py
 
