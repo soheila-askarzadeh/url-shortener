@@ -1,5 +1,6 @@
 """Shortener Module"""
 import random
+import re
 import string
 import logging
 import pathlib
@@ -59,7 +60,7 @@ def create_shortcode():
     if not long_url:
         logger.error("url is empty")
         return abort(400, "Url not present")
-    if not long_url.startswith("http") or len(long_url) > 150:
+    if not validate_url(long_url):
         logger.error("url is invalid")
         return abort(412, "The provided url is invalid")
     if not code:
@@ -131,6 +132,12 @@ def generate_shortened_url(url, shortcode):
     base_url = f"{parsed_url.scheme}://{parsed_url.netloc}/"
     return base_url + shortcode
 
+def validate_url(url):
+    """Validate URL"""
+    if len(url) > 150:
+        return False
+    regex = r"^https?://(?:www\.)?[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$"
+    return re.match(regex, url) is not None
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=7006, debug=True)
