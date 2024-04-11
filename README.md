@@ -32,7 +32,7 @@ Activate a virtual environment
 
 Install the dependencies from `requirements.txt`
 
-    (vevn) pip install -r requirements.txt 
+    (venv) pip install -r requirements.txt 
 
 Navigate to the /shortener folder
 
