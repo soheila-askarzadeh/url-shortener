@@ -72,7 +72,7 @@ The base URL for all endpoints is: `http://localhost:7006`
   {
     "shortcode": "Shortened_Code"
   }
-
+- **Additional Requirement**: The `shortcode` should have a length of 6 characters and contain only alphanumeric characters or underscores.
 
 #### 2. Retrieve Original URL
 
@@ -107,18 +107,18 @@ The base URL for all endpoints is: `http://localhost:7006`
 #### Create a Shortened URL
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.example.com", "shortcode": "example"}' http://localhost:7006/shorten
+curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.example.com", "shortcode": "exmpl1"}' http://localhost:7006/shorten
 ```
 #### Retrieve the Original URL
 
 ```bash
-curl -L http://localhost:7006/example
+curl -L http://localhost:7006/exmpl1
 ```
 
 #### Retrieve Statistics
 
 ```bash
-curl http://localhost:7006/example/stats
+curl http://localhost:7006/exmpl1/stats
 ```
 ### Errors
 
