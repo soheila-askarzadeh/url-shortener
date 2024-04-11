@@ -10,5 +10,3 @@ def create_shortener_table():
     create_table_cmd = f"CREATE TABLE IF NOT EXISTS shortcode ({','.join(columns)})"
     conn.execute(create_table_cmd)
     conn.close()
-
-create_shortener_table()

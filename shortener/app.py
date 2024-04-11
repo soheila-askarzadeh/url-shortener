@@ -6,6 +6,7 @@ import logging
 import pathlib
 from datetime import datetime
 from urllib.parse import urlparse
+from build_db import create_shortener_table
 from flask import Flask, render_template, request, jsonify, abort, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -42,13 +43,13 @@ class ShortCodes(db.Model):
     shortened_url= db.Column(db.String(100), unique = True)
     created_date = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
     last_redirect = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
-    redirect_count = db.Column(db.Integer)
+    redirect_count = db.Column(db.Integer, default=0)
 
 @app.route("/")
 def display_home():
     """Renders the home page"""
     urls = ShortCodes.query.all()
-    return render_template("home.html", urls = urls)
+    return render_template("home.html", urls=urls)
 
 @app.route("/shorten", methods=["POST"])
 def create_shortcode():
@@ -140,4 +141,5 @@ def validate_url(url):
     return re.match(regex, url) is not None
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=7006, debug=True)
+    create_shortener_table()
+    app.run(host="0.0.0.0", port=8000, debug=True)

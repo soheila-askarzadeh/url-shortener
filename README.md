@@ -38,10 +38,6 @@ Navigate to the /shortener folder
 
      cd shortener
 
-To build a database run
-
-     python build_db.py
-
 Then run the main Python script
 
      python app.py
@@ -50,7 +46,7 @@ Then run the main Python script
 
 ### Base URL
 
-The base URL for all endpoints is: `http://localhost:7006`
+The base URL for all endpoints is: `http://localhost:8000`
 
 ### Endpoints
 
@@ -107,18 +103,18 @@ The base URL for all endpoints is: `http://localhost:7006`
 #### Create a Shortened URL
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.example.com", "shortcode": "exmpl1"}' http://localhost:7006/shorten
+curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.example.com", "shortcode": "exmpl1"}' http://localhost:8000/shorten
 ```
 #### Retrieve the Original URL
 
 ```bash
-curl -L http://localhost:7006/exmpl1
+curl -L http://localhost:8000/exmpl1
 ```
 
 #### Retrieve Statistics
 
 ```bash
-curl http://localhost:7006/exmpl1/stats
+curl http://localhost:8000/exmpl1/stats
 ```
 ### Errors
 
@@ -128,7 +124,7 @@ curl http://localhost:7006/exmpl1/stats
 - **412 Precondition Failed**: If the URL or shortcode provided is invalid.
 
 ## List of Shortcodes
-Upon running the project and inserting a new shortcode, you can view a list of items by navigating to http://localhost:7006/
+Upon running the project and inserting a new shortcode, you can view a list of items by navigating to http://localhost:8000/
 
 ## Author
    Soheila Askarzadeh 
